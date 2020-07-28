@@ -128,7 +128,7 @@ def show_n(images, titles=('',)):
   plt.show()
 
 def ask_content_image(is_demo=False):
-  path = input("Please upload an image to this project directory.\nEnter image path here: ")
+  path = input("Please upload an image to stylize to this project directory.\nEnter image path here: ")
 
   if is_demo:
     path = '/content/input.jpg'
@@ -279,8 +279,6 @@ print(user_styles)
 print(selected_styles)
 print(style_dict.keys())
 
-print("As this is a demo, please feel free to enter anything below.")
-content_image = ask_content_image(is_demo=True)
 
 def ask_per_style(style_dict, mask_dict):
   #object_list = list(mask_dict.keys())
