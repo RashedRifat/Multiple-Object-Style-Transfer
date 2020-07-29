@@ -30,7 +30,7 @@ For our project, we use the Detectron2 structure set up by the Facebook AI Resea
 We implemented the Detetctron2 code in our program to identify the objects in the image and their corresponding object binary masks - a pixel-wise image with pixels being 0 or 1 is the associated pixel in the content image is a part of the mask. 
 
 An example of this object detection can be seen here. 
-![Object Detection Example](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/object_detection_example.png)
+![Object Detection Example](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/object_identification_example.png)
 
 Form here, the appropriate objects, masks and classes can be identified for stylization. 
 
