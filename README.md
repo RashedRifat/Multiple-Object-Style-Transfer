@@ -22,3 +22,16 @@ In traditional Neural Style Transfer, this content imahge can be stylized by usi
 ![Fast Style Transfer Example](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/fast%20style%20transfer.png)
 
 While this is quite an excellent result, it does not provide an granular level of control within the content image. Say that we wanted only to stylize the person riding the horse or the horse itself. Perhaps you wanted to stylize the horse with a fire style while the man riding the horse was to be stylized using oceanic waves. This level of control introduces new challenges to the intial project, primarily the usage of computer visison in identifying objects and applying multiple styeles to different objects within the image. Let's take a look at how computer vision is utilized in this project. 
+
+## Computer Vision Using Detectron2
+
+For our project, we use the Detectron2 structure set up by the Facebook AI Research (FAIR) team. The Github Repo can be found [here](https://github.com/facebookresearch/detectron2). 
+
+We implemented the Detetctron2 code in our program to identify the objects in the image and their corresponding object binary masks - a pixel-wise image with pixels being 0 or 1 is the associated pixel in the content image is a part of the mask. 
+
+An example of this object detection can be seen here. 
+![Object Detection Example](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/object_detection_example.png)
+
+Form here, the appropriate objects, masks and classes can be identified for stylization. 
+
+## Stylizing Multiple Objects Using Multiple Styles 
