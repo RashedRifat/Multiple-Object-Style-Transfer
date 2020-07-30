@@ -61,7 +61,9 @@ An inverse image is shown below. Note that more objects are absent than the styl
 
 In order to build a final image, each of the stylized object images must be combined along with the inverse image (background). This can be done simply by adding each object image onto the inverse image (as the shapes of each image has been preserved). In practoce, each object image can be thought of as a layer and this is the process of merging each layer to have the net effect of reconstructing the final image. This results in a full image, where all pixels have been filled in, creating the true stylized image. 
 
-This is the resulting image when three differnt styles have been applied to all the objects within one image.
+This is the resulting image when three differnt styles have been applied to all the objects within a content image. The three image files were ['fire'](https://upload.wikimedia.org/wikipedia/commons/3/36/Large_bonfire.jpg), which was applied to the horse, ['kanagawa_great_wave'](https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg), which was applied to the rider, and ['kandinsky_composition_7'](https://upload.wikimedia.org/wikipedia/commons/b/b4/Vassily_Kandinsky%2C_1913_-_Composition_7.jpg), which was applied to everything else.
+
+![final_output_image](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/final_output_image.png)
 
 An important note to make here is that layers must be pixel-exclusive; otherwise fringe effects are prone to occur. 
 
