@@ -41,6 +41,8 @@ After each object and its corresponding mask has been identified appropriately, 
 
 Here, the objects of each style have their masks combined to form a single aggregrate mask for each style. The end result is a list of styles and aggregreate masks for each particular style. An example of an aggregrate mask has been shown below, which contains multiple objects within it. True values are shown in yellow while false values are shown in purple. 
 
+![mask_visualization](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/mask_visualization.png)
+
 The final step is to create an inverse mask, which can be accomplished by creating a tensor of ones of the same shape as the content image and subtracts the masks of all selected objects. The end result is an inverse mask that can extract all pixels that should not be stylized. 
 
 ## Extracting Objects from Stylized Images 
@@ -53,6 +55,8 @@ Finally, an inverse image is created. This consists of the content image and the
 
 An inverse image is shown below. Note that more objects are absent than the stylized objects shown above. This is because the missing objects are being stylized using a different one than the style above. 
 
+![inverse_image](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/inverse_image.png)
+
 ## Creating the Final Image 
 
 In order to build a final image, each of the stylized object images must be combined along with the inverse image (background). This can be done simply by adding each object image onto the inverse image (as the shapes of each image has been preserved). In practoce, each object image can be thought of as a layer and this is the process of merging each layer to have the net effect of reconstructing the final image. This results in a full image, where all pixels have been filled in, creating the true stylized image. 
@@ -60,7 +64,6 @@ In order to build a final image, each of the stylized object images must be comb
 This is the resulting image when three differnt styles have been applied to all the objects within one image.
 
 An important note to make here is that layers must be pixel-exclusive; otherwise fringe effects are prone to occur. 
-
 
 # Limitations and Issues 
 
