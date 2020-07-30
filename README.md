@@ -39,21 +39,25 @@ From here, the appropriate objects, masks and classes can be identified for styl
 
 After each object and its corresponding mask has been identified appropriately, multiple styles are chosen by the user. The user will then identify which objects should be attributed to each particular style. Again, multiple objects can be attributed to a single style. 
 
-Here, the objects of each style have their masks combined to form a single aggregrate mask for each style. The end result is a list of styles and aggregreate masks for each particular style. 
+Here, the objects of each style have their masks combined to form a single aggregrate mask for each style. The end result is a list of styles and aggregreate masks for each particular style. An example of an aggregrate mask has been shown below, which contains multiple objects within it. True values are shown in yellow while false values are shown in purple. 
 
 The final step is to create an inverse mask, which can be accomplished by creating a tensor of ones of the same shape as the content image and subtracts the masks of all selected objects. The end result is an inverse mask that can extract all pixels that should not be stylized. 
 
-## Extracting Images from Stylized Images 
+## Extracting Objects from Stylized Images 
 
 Here, the content image and style images are passed into the neural style transfer architecture. This will result in multiple content images, each stylizied according to the input specfications. 
 
-In order to extract the the appropriate objects from each style, the aggregrate masks for each style can be broadcast into the stylized content images. Doing so results in an image where only the objects for each associated style are extracted. The net result is a list of images, each containing objects of a single style. 
+In order to extract the the appropriate objects from each style, the aggregrate masks for each style can be broadcast into the stylized content images. Doing so results in an image where only the objects for each associated style are extracted. The net result is a list of images, each containing objects of a single style. The example below shows extraction of several objects from a stylized content image. 
 
-Finally, an inverse image is created. This consists of the content image and the inverse mask being broadcasted together. This results in an image where all chosen objects are absent. In essence, this is the background for our stylized objects.
+Finally, an inverse image is created. This consists of the content image and the inverse mask being broadcasted together. This results in an image where all chosen objects are absent. In essence, this is the background for our stylized objects. 
+
+An inverse image is shown below. Note that more objects are absent than the stylized objects shown above. This is because the missing objects are being stylized using a different one than the style above. 
 
 ## Creating the Final Image 
 
 In order to build a final image, each of the stylized object images must be combined along with the inverse image (background). This can be done simply by adding each object image onto the inverse image (as the shapes of each image has been preserved). In practoce, each object image can be thought of as a layer and this is the process of merging each layer to have the net effect of reconstructing the final image. This results in a full image, where all pixels have been filled in, creating the true stylized image. 
+
+This is the resulting image when three differnt styles have been applied to all the objects within one image.
 
 An important note to make here is that layers must be pixel-exclusive; otherwise fringe effects are prone to occur. 
 
