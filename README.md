@@ -51,6 +51,8 @@ Here, the content image and style images are passed into the neural style transf
 
 In order to extract the the appropriate objects from each style, the aggregrate masks for each style can be broadcast into the stylized content images. Doing so results in an image where only the objects for each associated style are extracted. The net result is a list of images, each containing objects of a single style. The example below shows extraction of several objects from a stylized content image. 
 
+![Object Extraction Example](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/extraction_image.png)
+
 Finally, an inverse image is created. This consists of the content image and the inverse mask being broadcasted together. This results in an image where all chosen objects are absent. In essence, this is the background for our stylized objects. 
 
 An inverse image is shown below. Note that more objects are absent than the stylized objects shown above. This is because the missing objects are being stylized using a different one than the style above. 
