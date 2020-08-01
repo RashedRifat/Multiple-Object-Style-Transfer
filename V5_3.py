@@ -13,6 +13,7 @@ This project draws heavily from Fast Style Transfer for Arbitrary Styles (establ
 
 # install dependencies: 
 !pip install pyyaml==5.1 pycocotools>=2.0.1
+!pip install torch==1.5 torchvision==0.6 -f https://download.pytorch.org/whl/cu101/torch_stable.html
 import torch, torchvision
 print(torch.__version__, torch.cuda.is_available())
 !gcc --version
@@ -367,7 +368,8 @@ class Style_obj():
         continue 
       else:
         for obj in lis:
-          inv_mask -= obj.cpu().numpy()
+          obj = obj.cpu().numpy()
+          inv_mask = np.where(inv_mask != obj, inv_mask, inv_mask - obj)
           #Realzie the shape of the masks are [480,640], which requires special broadcasting with tensors of shape [480,640,3]
     
     self.inverse_mask = inv_mask
@@ -379,7 +381,7 @@ class Style_obj():
       #list_len = len(self.masks[index])
       base = torch.zeros(self.mask_shape).numpy()
       for indiv in self.masks[index]:
-        base += indiv.cpu().numpy()
+        base = np.maximum(base, indiv.cpu().numpy())
       self.true_masks.append(base)
     print("True_Mask Size: ", len(self.true_masks))
     print("Inv_Mask Size: ", self.inverse_mask.shape)
@@ -421,7 +423,7 @@ class Style_obj():
     #Combine all!
     for image in self.stylized_objects:
       for i in range(0, 3):
-          base_image[:,:,i] = base_image[:,:,i] + image[:,:,i]
+          base_image[:,:,i] = np.maximum(base_image[:,:,i], image[:,:,i])
     cv2_imshow(base_image)
 
     if save:
