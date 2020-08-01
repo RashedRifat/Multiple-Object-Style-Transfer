@@ -1,0 +1,5 @@
+pyyaml==5.1
+pycocotools>=2.0.1
+torch>=1.5
+torchvision
+git+https://github.com/facebookresearch/detectron2.git
