@@ -4,7 +4,7 @@ All source files in this repository are released under the Apache 2.0 license, t
 
 A project created within the MWML Incubator, the goal of our project is to extend neural style transfer, using multiple styles, to multiple objects identified by the Detectron2 architecture. Previously, neural style transfer was limited to stylizing the entirety of a single image using one style image. In this project, we aim to improve upon the control of this style transfer by allowing users to select which objects to stylize and the style image to be used. Multiple objects can be stylized using different multiple styles (style images can either be uploaded by the user or chosen from a pre-set dictionary of styles) in one pass of the program, resulting in a single output image where objects within the image are stylized according to the specifications of the user. 
 
-View the Google Colab Notebook [here.](https://colab.research.google.com/drive/1-Br4W22PjYB6YYMdXg5vrO_r6ulmfa-V?usp=sharing)
+We highly recommend visiting the Google Colab Notebook. The authors used it to primarily develop this program due to the computational resources it provides. This code has not been tested on a local device as we did not have access to the appropriate hardware. View the Google Colab Notebook [here.](https://colab.research.google.com/drive/1-Br4W22PjYB6YYMdXg5vrO_r6ulmfa-V?usp=sharing)
 
 
 # Demo 
@@ -67,9 +67,15 @@ This is the resulting image when three different styles have been applied to all
 
 ![final_output_image](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/final_output_image.png)
 
-An important note to make here is that layers must be pixel-exclusive; otherwise fringe effects are prone to occur. 
+An important note to make here is that layers must be pixel-exclusive; otherwise fringe effects are prone to occur. This may lead to some fringe effects where certain objects are discolored into a pink and green blob. *Update:* This problem has since been resolved by the authors. Please refer to the Limitations, Issues, and Fixes section for further reading. 
 
-# Limitations and Issues 
+## Applying Light Style 
+
+Images processed in this manner tend to be vibrant with high contrast to the original image, given that the provided styles were also of an appropriate strength and intensity. While this may prove useful in certain situations, in others, it might be too overstated. As such, a light application of this program can be utilized by calling apply_light in the last few lines of the code, after the StyObj has been initialized. An example of light stylization vs normal stylization can be seen below. 
+
+![light_style_example](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/light_stylization_example.png) 
+
+# Limitations, Issues, and Fixes 
 
 The limitation of this program can be easily identified: it stems from the capabilities of the two models it extends. The accuracy to which each object is identified is limited by the efficacy of the Detectron2 model. Similarly, the degree to which each image can be stylized depends on the fidelity of the neural style transfer architecture. 
 
@@ -78,3 +84,12 @@ It is recommended that images of size 640 x 640 be chosen. While this program is
 Another limitation of this program is that it does not provide a trainable model. In pursuit of greater speed and efficiency, this capability was compromised. Both the Detectron2 and neural style transfer architecture have been pre-trained on the COCO dataset. 
 
 Finally, some derivative issues arise when these models are applied in conjunction. Some portions of the resultant image might become oddly distorted. This results when two layers occupy the same space - the result of adding these two layers creates an interference that distorts the final image. This originates from the Detectron2 structure, where objects may be identified with pixels being attributed to more than a single object. This effect carries over the course of the program and results in layers which are not pixel exclusive. One solution to this could be to re-train the Detecron2 on an image. This will compromise in speed while increasing accuracy. The authors are attempting to address this issue in further edits. 
+
+*Update:* The issue of fringe effects was fixed in a later commit. This problem arose when layers were being added to the inverse image (the base) - several layers overlapped due to the mask overlap defined by the Detectron2. The solution was also in this final merging step. Instead of adding the pixels of each layer to the base image, pixels were only added if there was not a base pixel already present. This ensures that layers do not overlap, and the final result is a picture that preserves stylization fidelity. This solution was implemented here and not upstream so as avoid bugs with stylizing the content image.
+
+
+# Updates
+
+8/1/2020: Fringe Effects issue resolved. Explanation located above. 
+
+8/3/2020: Light Stylization was added to the project. An explanation has been provided above in the demo.  
