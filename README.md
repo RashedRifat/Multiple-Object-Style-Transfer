@@ -93,3 +93,8 @@ Finally, some derivative issues arise when these models are applied in conjuncti
 8/1/2020: Fringe Effects issue resolved. Explanation located above. 
 
 8/3/2020: Light Stylization was added to the project. An explanation has been provided above in the demo.  
+
+
+# Acknowledgements
+
+This work could not have been done without the code provided the [FaceBook AI Research Team's Detectron2](https://github.com/facebookresearch/detectron2)  and [The Tensorflow Hub Author's Neural Style Transfer](https://github.com/tensorflow/docs/blob/master/site/en/tutorials/generative/style_transfer.ipynb). We would also like to thank the Made With ML Team for all the help they provided us, as well as a special shoutout for Goku Mohandas, who both organized the incubator and answered all of our last-minute questions. Thank you!
