@@ -75,6 +75,10 @@ Images processed in this manner tend to be vibrant with high contrast to the ori
 
 ![light_style_example](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/assets/light_stylization_example.png) 
 
+## Using Different Style Weights (Generalization of Light Style)
+
+The Style Object may be initialized with a weight that takes a value between 0 and 1. 1 denotes applying the full style, whereas 0 denotes the original image.
+
 # Limitations, Issues, and Fixes 
 
 The limitation of this program can be easily identified: it stems from the capabilities of the two models it extends. The accuracy to which each object is identified is limited by the efficacy of the Detectron2 model. Similarly, the degree to which each image can be stylized depends on the fidelity of the neural style transfer architecture. 
@@ -93,6 +97,8 @@ Finally, some derivative issues arise when these models are applied in conjuncti
 8/1/2020: Fringe Effects issue resolved. Explanation located above. 
 
 8/3/2020: Light Stylization was added to the project. An explanation has been provided above in the demo.  
+
+8/7/2020: Different style weights added to the project.
 
 
 # Acknowledgements
