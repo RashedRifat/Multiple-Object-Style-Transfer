@@ -4,7 +4,7 @@ All source files in this repository are released under the Apache 2.0 license, t
 
 A project created within the MWML Incubator, the goal of our project is to extend neural style transfer, using multiple styles, to multiple objects identified by the Detectron2 architecture. Previously, neural style transfer was limited to stylizing the entirety of a single image using one style image. In this project, we aim to improve upon the control of this style transfer by allowing users to select which objects to stylize and the style image to be used. Multiple objects can be stylized using different multiple styles (style images can either be uploaded by the user or chosen from a pre-set dictionary of styles) in one pass of the program, resulting in a single output image where objects within the image are stylized according to the specifications of the user. 
 
-We highly recommend visiting the Google Colab Notebook. The authors used it to primarily develop this program due to the computational resources it provides. This code has not been tested on a local device as we did not have access to the appropriate hardware. View the Google Colab Notebook [here.](https://colab.research.google.com/drive/1-Br4W22PjYB6YYMdXg5vrO_r6ulmfa-V?usp=sharing)
+We highly recommend visiting the Google Colab Notebook. The authors used it to primarily develop this program due to the computational resources it provides. This code has not been tested on a local device as we did not have access to the appropriate hardware. View the Google Colab Notebook [here.](https://colab.research.google.com/drive/1-Br4W22PjYB6YYMdXg5vrO_r6ulmfa-V?usp=sharing). A quick demo can be found in the repo or [here](https://github.com/RashedRifat/Multiple-Object-Style-Transfer/blob/master/demo.mp4) (you may need to download the mp4 file to view it). 
 
 
 # Demo 
@@ -99,6 +99,8 @@ Finally, some derivative issues arise when these models are applied in conjuncti
 8/3/2020: Light Stylization was added to the project. An explanation has been provided above in the demo.  
 
 8/7/2020: Different style weights added to the project.
+
+8/8/2020: Added demo.mp4 file. 
 
 
 # Acknowledgements
